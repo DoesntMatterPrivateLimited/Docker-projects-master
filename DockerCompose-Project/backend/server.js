@@ -11,14 +11,11 @@ app.use(express.json());
 app.use(cors());
 
 const db = createPool({
-    host: process.env.host,
-    user: process.env.user,
-    password: process.env.password,
-    database: process.env.database,
-    connectionLimit: 10, // Adjust based on your requirements
-    ssl: {
-        rejectUnauthorized: false
-    }
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    connectionLimit: 10
 });
 
 process.on('unhandledRejection', (reason, promise) => {
